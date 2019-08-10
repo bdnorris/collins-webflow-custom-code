@@ -2,6 +2,9 @@
 var bigB = document.getElementById('big-b');
 var bCircle = document.getElementById('b-circle');
 var header = document.querySelector('.header');
+var dashes = document.getElementById('dashes');
+var content = document.getElementById('content');
+var masthead = document.querySelector('.masthead');
 
 // init transform
 bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)'
@@ -10,20 +13,36 @@ bCircle.style.transform = 'scale(0)'
 window.addEventListener('scroll', callback);
 
 function callback() {
-console.log('scroll', header.offsetTop, window.scrollY, header.offsetTop/2);
+console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
   if ((header.offsetTop*0.2) <= window.scrollY) {
     requestAnimationFrame(backToNorm);
+    if (window.scrollY >= content.offsetTop) {
+      requestAnimationFrame(hitContent);
+    }
   } else {
-    requestAnimationFrame(toTop);
+    requestAnimationFrame(hitBanner);
   }
 }
 
 function backToNorm() {
   bigB.style.transform = 'scale(1)';
+  bigB.classList.remove('b-black');
   bCircle.style.transform = 'scale(1)'
+  dashes.style.transform = 'scaleX(0)';
+  masthead.style.backgroundColor = '#76ced9';
 }
-function toTop() {
+function hitBanner() {
   bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)';
-  bCircle.style.transform = 'scale(0)'
+  bigB.classList.remove('b-black');
+  bCircle.style.transform = 'scale(0)';
+  dashes.style.transform = 'scaleX(1)';
+  masthead.style.backgroundColor = '#76ced9';
+}
+function hitContent() {
+  bigB.style.transform = 'scale(0.7) translateY(-37px)';
+  bigB.classList.add('b-black');
+  bCircle.style.transform = 'scale(0)';
+  dashes.style.transform = 'scaleX(1)';
+  masthead.style.backgroundColor = 'transparent';
 }
 </script>
