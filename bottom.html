@@ -7,42 +7,62 @@ var content = document.getElementById('content');
 var masthead = document.querySelector('.masthead');
 
 // init transform
-bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)'
-bCircle.style.transform = 'scale(0)'
+// bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)'
+bigB.classList.add('big-b--scaled');
+// bCircle.style.transform = 'scale(0)'
+bCircle.classList.add('b-circle--hidden');
 
 window.addEventListener('scroll', callback);
 
 function callback() {
 console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
-  if ((header.offsetTop*0.2) <= window.scrollY) {
-    requestAnimationFrame(backToNorm);
+  if ((header.offsetTop*0.3) <= window.scrollY) {
+    // header, under the splash, is 100vh from the top, so let's say when we're at 30vh, is when we'll instate the top styles
+    console.log('hitHeader')
+    requestAnimationFrame(hitHeader);
     if (window.scrollY >= content.offsetTop) {
+      // if we scroll to the content, run hit content
+      console.log('hitContent')
       requestAnimationFrame(hitContent);
     }
   } else {
-    requestAnimationFrame(hitBanner);
+    // otherwise we'll assume we're at the header
+    console.log('backToTop')
+    requestAnimationFrame(backToTop);
   }
 }
 
-function backToNorm() {
-  bigB.style.transform = 'scale(1)';
+function hitHeader() {
+  // bigB.style.transform = 'scale(1)';
   bigB.classList.remove('b-black');
-  bCircle.style.transform = 'scale(1)'
-  dashes.style.transform = 'scaleX(0)';
-  masthead.style.backgroundColor = '#76ced9';
+  bigB.classList.remove('big-b--scaled');
+  // bCircle.style.transform = 'scale(1)'
+  bCircle.classList.remove('b-circle--hidden');
+  // dashes.style.transform = 'scaleX(0)';
+  dashes.classList.add('dashes--header');
+  dashes.classList.remove('dashes--content');
+  masthead.classList.remove('masthead--content');
 }
-function hitBanner() {
-  bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)';
+function backToTop() {
+  // bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)';
+  bigB.classList.add('big-b--scaled');
   bigB.classList.remove('b-black');
-  bCircle.style.transform = 'scale(0)';
-  dashes.style.transform = 'scaleX(1)';
-  masthead.style.backgroundColor = '#76ced9';
+  // bCircle.style.transform = 'scale(0)';
+  bCircle.classList.add('b-circle--hidden');
+  // dashes.style.transform = 'scaleX(1)';
+  dashes.classList.remove('dashes--header');
+  dashes.classList.remove('dashes--content');
+  masthead.classList.remove('masthead--content');
 }
 function hitContent() {
-  bigB.style.transform = 'scale(0.7) translateY(-37px)';
+  // bigB.style.transform = 'scale(0.7) translateY(-37px)';
   bigB.classList.add('b-black');
-  bCircle.style.transform = 'scale(0)';
-  dashes.style.transform = 'scaleX(1)';
-  masthead.style.backgroundColor = 'transparent';
+  bigB.classList.remove('big-b--scaled');
+  // bCircle.style.transform = 'scale(0)';
+  bCircle.classList.add('b-circle--hidden');
+  // dashes.style.transform = 'scaleX(1)';
+  dashes.classList.remove('dashes--header');
+  dashes.classList.add('dashes--content');
+  masthead.classList.add('masthead--content');
 }
 </script>
