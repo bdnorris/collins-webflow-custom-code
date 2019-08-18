@@ -3,8 +3,12 @@ var bigB = document.getElementById('big-b');
 var bCircle = document.getElementById('b-circle');
 var header = document.querySelector('.header');
 var dashes = document.getElementById('dashes');
+var brandingLarge = document.getElementById('branding-large');
+var brandingSmall = document.getElementById('branding-small');
 var content = document.getElementById('content');
 var masthead = document.querySelector('.masthead');
+var dashesPixelWidth = 12,
+  modulusD;
 
 // init transform
 // bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)'
@@ -12,9 +16,10 @@ bigB.classList.add('big-b--scaled');
 // bCircle.style.transform = 'scale(0)'
 bCircle.classList.add('b-circle--hidden');
 
-window.addEventListener('scroll', callback);
+window.addEventListener('scroll', scrollWatcher);
+window.addEventListener('resize', resizeWatcher);
 
-function callback() {
+function scrollWatcher() {
 console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
   if ((header.offsetTop*0.3) <= window.scrollY) {
     // header, under the splash, is 100vh from the top, so let's say when we're at 30vh, is when we'll instate the top styles
@@ -64,5 +69,53 @@ function hitContent() {
   dashes.classList.remove('dashes--header');
   dashes.classList.add('dashes--content');
   masthead.classList.add('masthead--content');
+}
+
+function adjustDashesWidth() {
+  dashes.style.marginLeft = '0'; // reset width so it can be measured
+  var currentWidth = dashes.offsetWidth;
+  console.log('currentWidth', currentWidth);
+  modulusD = currentWidth % dashesPixelWidth;
+  console.log('modulus', modulusD);
+  // dashes.style.marginLeft = modulusD + 'px';
+  // var minusOrPlus = modulusD <= dashesPixelWidth/2;
+  var minusOrPlus = ((currentWidth - modulusD)/dashesPixelWidth % 2) > 0; // even
+  console.log(minusOrPlus);
+  // var minusOrPlusString = modulusD > dashesPixelWidth/12 ? '+' : '-';
+  // if (minusOrPlus) {
+  //   dashes.style.backgroundPosition = 'calc(50% ' + minusOrPlusString + ' ' + (dashesPixelWidth/2 + modulusD) + 'px) 50%';
+  //   dashes.style.marginLeft = (dashesPixelWidth/2 + modulusD)
+  // } else {
+  //   dashes.style.backgroundPosition = 'calc(50% ' + minusOrPlusString + ' ' + (dashesPixelWidth/2 - modulusD) + 'px) 50%';
+  //   dashes.style.marginLeft = (dashesPixelWidth/2 - modulusD)
+  // }
+  if (minusOrPlus) {
+    dashes.style.marginLeft = (modulusD) + 'px';
+    // dashes.style.backgroundPosition = 'calc(50% - ' + (modulusD + dashesPixelWidth/2) + 'px)';
+  } else {
+    dashes.style.marginLeft = (modulusD - dashesPixelWidth) + 'px';
+    // dashes.style.backgroundPosition = 'calc(50% + ' + (modulusD + dashesPixelWidth/2) + 'px)';
+  }
+}
+adjustDashesWidth();
+
+// function adjustBrandPos() {
+//   var brandingSmallLeft = brandingSmall.offsetLeft;
+//   var brandingLargeLeft = brandingLarge.offsetLeft;
+//   console.log('brandingSmallLeft', brandingSmallLeft);
+//   console.log('brandingLargeLeft', brandingLargeLeft);
+//   var modulusS = brandingSmallLeft % dashesPixelWidth;
+//   console.log('modulusS', modulusS);
+//   var modulusL = brandingLargeLeft % dashesPixelWidth;
+//   console.log('modulusL', modulusL);
+//   brandingSmall.style.marginLeft = '-' + modulusS + 'px';
+//   brandingLarge.style.marginLeft = '-' + modulusL + 'px';
+// }
+// adjustBrandPos();
+
+function resizeWatcher() {
+  console.log('resize');
+  requestAnimationFrame(adjustDashesWidth);
+  // requestAnimationFrame(adjustBrandPos);
 }
 </script>
