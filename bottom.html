@@ -7,6 +7,7 @@ var brandingLarge = document.getElementById('branding-large');
 var brandingSmall = document.getElementById('branding-small');
 var content = document.getElementById('content');
 var masthead = document.querySelector('.masthead');
+var downCaretSplash = document.getElementById('down-caret-splash');
 var dashesPixelWidth = 12,
   modulusD;
 
@@ -47,6 +48,9 @@ function hitHeader() {
   dashes.classList.add('dashes--header');
   dashes.classList.remove('dashes--content');
   masthead.classList.remove('masthead--content');
+
+  downCaretSplash.classList.add('down-caret--header');
+  // downCaret.classList.remove('down-caret--content');
 }
 function backToTop() {
   // bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)';
@@ -58,6 +62,9 @@ function backToTop() {
   dashes.classList.remove('dashes--header');
   dashes.classList.remove('dashes--content');
   masthead.classList.remove('masthead--content');
+
+  downCaretSplash.classList.remove('down-caret--header');
+  // downCaret.classList.remove('down-caret--content');
 }
 function hitContent() {
   // bigB.style.transform = 'scale(0.7) translateY(-37px)';
@@ -69,6 +76,9 @@ function hitContent() {
   dashes.classList.remove('dashes--header');
   dashes.classList.add('dashes--content');
   masthead.classList.add('masthead--content');
+  
+  // downCaretSplash.classList.remove('down-caret--header');
+  // downCaret.classList.add('down-caret--content');
 }
 
 function adjustDashesWidth() {
@@ -91,9 +101,11 @@ function adjustDashesWidth() {
   // }
   if (minusOrPlus) {
     dashes.style.marginLeft = (modulusD) + 'px';
+    bigB.style.marginLeft = (modulusD) + 'px';
     // dashes.style.backgroundPosition = 'calc(50% - ' + (modulusD + dashesPixelWidth/2) + 'px)';
   } else {
     dashes.style.marginLeft = (modulusD - dashesPixelWidth) + 'px';
+    bigB.style.marginLeft = (modulusD - dashesPixelWidth) + 'px'
     // dashes.style.backgroundPosition = 'calc(50% + ' + (modulusD + dashesPixelWidth/2) + 'px)';
   }
 }
@@ -118,4 +130,10 @@ function resizeWatcher() {
   requestAnimationFrame(adjustDashesWidth);
   // requestAnimationFrame(adjustBrandPos);
 }
+
+// hide big splash b everywhere except homepage
+if (typeof window.isHome === 'undefined' || !window.isHome) {
+  bigB.classList.add('big-b--not-home');
+}
+
 </script>
