@@ -1,7 +1,7 @@
 <script>
 var bigB = document.getElementById('big-b');
 var bCircle = document.getElementById('b-circle');
-var header = document.querySelector('.header');
+var header = document.getElementById('header');
 var dashes = document.getElementById('dashes');
 var brandingLarge = document.getElementById('branding-large');
 var brandingSmall = document.getElementById('branding-small');
@@ -48,8 +48,9 @@ function hitHeader() {
   dashes.classList.add('dashes--header');
   dashes.classList.remove('dashes--content');
   masthead.classList.remove('masthead--content');
-
-  downCaretSplash.classList.add('down-caret--header');
+  if(downCaretSplash) {
+    downCaretSplash.classList.add('down-caret--header');
+  }
   // downCaret.classList.remove('down-caret--content');
 }
 function backToTop() {
@@ -62,8 +63,9 @@ function backToTop() {
   dashes.classList.remove('dashes--header');
   dashes.classList.remove('dashes--content');
   masthead.classList.remove('masthead--content');
-
-  downCaretSplash.classList.remove('down-caret--header');
+  if(downCaretSplash) {
+    downCaretSplash.classList.remove('down-caret--header');
+  }
   // downCaret.classList.remove('down-caret--content');
 }
 function hitContent() {
