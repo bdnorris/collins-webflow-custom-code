@@ -13,15 +13,18 @@ var dashesPixelWidth = 12,
 
 // init transform
 // bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)'
-bigB.classList.add('big-b--scaled');
-// bCircle.style.transform = 'scale(0)'
-bCircle.classList.add('b-circle--hidden');
+if (window.isHome) {
+  bigB.classList.add('big-b--scaled');
+  bCircle.classList.add('b-circle--hidden');
+} else {
+  dashes.classList.remove('dashes--header');
+}
 
 window.addEventListener('scroll', scrollWatcher);
 window.addEventListener('resize', resizeWatcher);
 
 function scrollWatcher() {
-console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
+// console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
   if ((header.offsetTop*0.3) <= window.scrollY) {
     // header, under the splash, is 100vh from the top, so let's say when we're at 30vh, is when we'll instate the top styles
     console.log('hitHeader')
@@ -34,7 +37,9 @@ console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
   } else {
     // otherwise we'll assume we're at the header
     console.log('backToTop')
-    requestAnimationFrame(backToTop);
+    if(window.isHome) {
+      requestAnimationFrame(backToTop);
+    }
   }
 }
 
@@ -93,14 +98,6 @@ function adjustDashesWidth() {
   // var minusOrPlus = modulusD <= dashesPixelWidth/2;
   var minusOrPlus = ((currentWidth - modulusD)/dashesPixelWidth % 2) > 0; // even
   console.log(minusOrPlus);
-  // var minusOrPlusString = modulusD > dashesPixelWidth/12 ? '+' : '-';
-  // if (minusOrPlus) {
-  //   dashes.style.backgroundPosition = 'calc(50% ' + minusOrPlusString + ' ' + (dashesPixelWidth/2 + modulusD) + 'px) 50%';
-  //   dashes.style.marginLeft = (dashesPixelWidth/2 + modulusD)
-  // } else {
-  //   dashes.style.backgroundPosition = 'calc(50% ' + minusOrPlusString + ' ' + (dashesPixelWidth/2 - modulusD) + 'px) 50%';
-  //   dashes.style.marginLeft = (dashesPixelWidth/2 - modulusD)
-  // }
   if (minusOrPlus) {
     dashes.style.marginLeft = (modulusD) + 'px';
     bigB.style.marginLeft = (modulusD) + 'px';
@@ -134,7 +131,9 @@ function resizeWatcher() {
 }
 
 // hide big splash b everywhere except homepage
-if (typeof window.isHome === 'undefined' || !window.isHome) {
+if (window.isHome) {
+
+} else {
   bigB.classList.add('big-b--not-home');
 }
 
