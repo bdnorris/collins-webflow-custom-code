@@ -95,6 +95,12 @@
     -moz-text-fill-color: transparent;
 } */
 
+.copy-date {
+  font-family: Objectivity, sans-serif;
+  font-size: 18px;
+  margin-right: 0.5em;
+}
+
 @media (max-width: 1140px) {
   .dashes {
     background-image: url('https://uploads-ssl.webflow.com/5d4a16787838e560a6aa3696/5d5978821e1398698020eac0_BCD_Dashes.svg')
@@ -129,6 +135,18 @@
   } */
 }
 
+@media (max-width: 767px) and (max-height: 736px) {
+  /* mobile landscape */
+  .big-b {
+    -webkit-transform: scale(0.5) translate(0px, calc(50vh - 70px));
+        -ms-transform: scale(0.5) translate(0px, calc(50vh - 70px));
+            transform: scale(0.5) translate(0px, calc(50vh - 70px));
+  }
+  .down-caret {
+    transform: scale(0.5);
+  }
+}
+
 @media (min-width: 768px) {
   /* desktop splash b scale */ 
 	.big-b:not(.big-b--scaled) {
@@ -148,6 +166,20 @@
   }
 }
 
+/* Custom breakpoint */
+
+@media (min-width: 768px) and (max-width: 1139px) {
+  .slide__heading {
+    font-size: 38px;
+  }
+  .slide__paragraph {
+    font-size: 14px;
+  }
+  .slide__caption {
+    font-size: 14px;
+  }
+}
+
 @media (min-width: 1293px) and (min-height: 800px) {
 
   .project-heading {
@@ -160,7 +192,8 @@
   }
   .slide__heading {
     /* font-size: 92px; */
-    font-size: 88px;
+    /* font-size: 88px; */
+    font-size: 72px;
   }
   .slide__paragraph, .slide__link {
     /* font-size: 32px; */
