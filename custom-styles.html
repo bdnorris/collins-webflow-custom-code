@@ -13,6 +13,10 @@
   display: none;
 } */
 
+.slide__link {
+  overflow-wrap: break-word;
+}
+
 /* .b-black {
 	transform: scale(0.825) translateY(-24px);
 } */
@@ -72,9 +76,20 @@
 
 .masthead--content {
 	background-color: white;
+  -webkit-transition: -webkit-transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: transform 300ms ease;
+  transition: transform 300ms ease, -webkit-transform 300ms ease;
 }
 .masthead--content svg path {
 	fill: black;
+}
+.masthead--content.masthead--hidden {
+  /* display: none; */
+  -webkit-transform: translateY(-100px);
+    -ms-transform: translateY(-100px);
+        transform: translateY(-100px);
 }
 
 .dashes--header {
