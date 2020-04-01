@@ -1,5 +1,9 @@
 <style>
 
+body {
+  background-color: black;
+}
+
 .icon, .navigation-row {
 	-webkit-box-sizing: content-box;
 	        box-sizing: content-box;
@@ -128,6 +132,21 @@
           transform: translate(0px, calc(50vh - 150px));
 }
 
+@media (max-height: 564px) {
+  .navigation {
+    /* -webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end; */
+    padding-top: 16vh;
+  }
+}
+@media (max-height: 468px) {
+  /* .navigation {
+    padding-top: 1em;
+  } */
+  .b-night {
+    display: none;
+  }
+}
+
 @media (min-width: 480px) {
   /* mobile splash b scale */
   .big-b:not(.big-b--scaled) {
@@ -195,7 +214,7 @@
   }
 }
 
-@media (min-width: 1293px) and (min-height: 800px) {
+@media (min-width: 1500px) and (min-height: 800px) {
 
   .project-heading {
     /* font-size: 120px; */
