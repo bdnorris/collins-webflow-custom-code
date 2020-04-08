@@ -127,23 +127,16 @@ body {
 }
 
 .big-b {
-  -webkit-transform: translate(0px, calc(50vh - 150px));
-      -ms-transform: translate(0px, calc(50vh - 150px));
-          transform: translate(0px, calc(50vh - 150px));
+  -webkit-transform: translate(0px, calc(50vh - 170px));
+      -ms-transform: translate(0px, calc(50vh - 170px));
+          transform: translate(0px, calc(50vh - 170px));
 }
-
-@media (max-height: 564px) {
-  .navigation {
-    /* -webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end; */
-    padding-top: 16vh;
-  }
-}
-@media (max-height: 468px) {
-  /* .navigation {
-    padding-top: 1em;
-  } */
-  .b-night {
-    display: none;
+@supports (-webkit-touch-callout: none) {
+  /* CSS specific to iOS devices */ 
+  .big-b {
+    -webkit-transform: translate(0px, calc(50vh - 190px));
+        -ms-transform: translate(0px, calc(50vh - 190px));
+            transform: translate(0px, calc(50vh - 190px));
   }
 }
 
@@ -169,17 +162,7 @@ body {
   } */
 }
 
-@media (max-width: 767px) and (max-height: 736px) {
-  /* mobile landscape */
-  .big-b {
-    -webkit-transform: scale(1) translate(0px, calc(50vh - 150px));
-        -ms-transform: scale(1) translate(0px, calc(50vh - 150px));
-            transform: scale(1) translate(0px, calc(50vh - 150px));
-  }
-  .down-caret {
-    transform: scale(0.5);
-  }
-}
+
 
 @media (min-width: 768px) {
   /* desktop splash b scale */ 
@@ -304,4 +287,53 @@ body {
   }
 }
 
+
+
+/** MOBILE LANDSCAPE */
+
+@media (max-width: 767px) and (max-height: 736px) {
+  /* mobile landscape */
+  /* .big-b {
+    -webkit-transform: scale(1) translate(0px, calc(50vh - 150px));
+        -ms-transform: scale(1) translate(0px, calc(50vh - 150px));
+            transform: scale(1) translate(0px, calc(50vh - 150px));
+  } */
+  .down-caret {
+    transform: scale(0.5);
+  }
+}
+
+@media (max-width: 767px) and (max-height: 564px) {
+  .navigation {
+    /* -webkit-box-pack: end;-ms-flex-pack: end;justify-content: flex-end; */
+    padding-top: 16vh;
+  }
+  /* mobile landscape */
+  /* .big-b {
+    -webkit-transform: scale(1) translate(0px, calc(50vh - 150px));
+        -ms-transform: scale(1) translate(0px, calc(50vh - 150px));
+            transform: scale(1) translate(0px, calc(50vh - 150px));
+  } */
+  .down-caret {
+    transform: scale(0.5);
+  }
+}
+
+@media (max-height: 468px) {
+  .b-night {
+    display: none;
+  }
+  .big-b {
+    -webkit-transform: scale(0.5) translate(0px, calc(50vh - 90px));
+        -ms-transform: scale(0.5) translate(0px, calc(50vh - 90px));
+            transform: scale(0.5) translate(0px, calc(50vh - 90px));
+  }
+}
+
+/* iPhone Safari changing colour of phone numbers */
+/* https://medium.com/@stephenkeable/iphone-safari-changing-colour-of-phone-numbers-b79e5139cc06 */
+a[href^=tel] {
+   text-decoration: inherit;
+   color: inherit;
+}
 </style>
