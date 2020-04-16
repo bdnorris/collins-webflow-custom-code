@@ -154,8 +154,16 @@ function resizeWatcher() {
 // hide big splash b everywhere except homepage
 if (window.isHome) {
 
+} else if (window.isCaseStudy) {
+  masthead.classList.add('masthead--case-study');
+  bigB.classList.add('big-b--case-study');
 } else {
   bigB.classList.add('big-b--not-home');
 }
+
+if (window.navigator && window.navigator.loadPurpose === "preview") {
+  bigB.classList.add('big-b--not-home');
+	window.location.href = "https://brian-collins-design-2019.webflow.io/top-sites-preview";
+};
 
 </script>
