@@ -2,6 +2,9 @@
 
 body {
   background-color: black;
+  /* font weight normalization */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .icon, .navigation-row {
@@ -32,7 +35,7 @@ body {
 	        box-sizing: content-box;
   /* background-color: white; */
   /* padding: 8px; */
-  top: 16px;
+  top: 10px;
 }
 
 .b-circle {
@@ -249,6 +252,26 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
+  /* .cs-intro__category {
+    font-size: 32px;
+  }
+  .cs-intro__heading {
+    font-size: 72px;
+  }
+  .cs-intro__p {
+    font-size: 36px;
+  }
+  .cs-intro__credit {
+    font-size: 32px;
+  }
+  .cs-intro__content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .cs-intro__content-container {
+    max-width: 2080px;
+  } */
+
   /* .social-link {
     width: 100px;
     height: 100px;
@@ -336,6 +359,9 @@ body {
 .masthead--case-study {
   background-color: #000;
 }
+.masthead--case-study.masthead--content {
+  background-color: white;
+}
 .masthead--case-study .b-circle__inner {
   background-color: #f9fae4;
 }
@@ -349,6 +375,15 @@ body {
 a[href^=tel] {
    text-decoration: inherit;
    color: inherit;
+}
+
+.cs-intro p {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  -webkit-font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+          font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+  font-variant-numeric: oldstyle-nums diagonal-fractions;
 }
 
 </style>
