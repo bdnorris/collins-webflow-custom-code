@@ -26,8 +26,8 @@ window.addEventListener('scroll', scrollWatcher);
 window.addEventListener('resize', resizeWatcher);
 
 function scrollWatcher() {
-// console.log('scroll', window.scrollY, header.offsetTop*0.2, content.offsetTop);
-  if ((header.offsetTop*0.3) <= window.scrollY) {
+  // console.log('scroll', window.scrollY, header.offsetTop*0.3, content.offsetTop);
+  if ((header.offsetTop*0.3) < window.scrollY) {
     // header, under the splash, is 100vh from the top, so let's say when we're at 30vh, is when we'll instate the top styles
     // console.log('hitHeader')
     requestAnimationFrame(hitHeader);
@@ -38,7 +38,7 @@ function scrollWatcher() {
     }
   } else {
     // otherwise we'll assume we're at the header
-    // console.log('backToTop')
+    // console.log('run backToTop')
     if(window.isHome) {
       requestAnimationFrame(backToTop);
     }
@@ -58,6 +58,7 @@ function scrollWatcher() {
 }
 
 function hitHeader() {
+  // console.log('hitHeader');
   // bigB.style.transform = 'scale(1)';
   bigB.classList.remove('b-black');
   bigB.classList.remove('big-b--scaled');
@@ -73,6 +74,7 @@ function hitHeader() {
   // downCaret.classList.remove('down-caret--content');
 }
 function backToTop() {
+  // console.log('backToTop');
   // bigB.style.transform = 'scale(6) translateY(5vh) translateX(4px)';
   bigB.classList.add('big-b--scaled');
   bigB.classList.remove('b-black');
@@ -88,6 +90,7 @@ function backToTop() {
   // downCaret.classList.remove('down-caret--content');
 }
 function hitContent() {
+  // console.log('hitContent');
   // bigB.style.transform = 'scale(0.7) translateY(-37px)';
   bigB.classList.add('b-black');
   bigB.classList.remove('big-b--scaled');
@@ -100,6 +103,7 @@ function hitContent() {
 }
 
 function adjustDashesWidth() {
+  // console.log('adjustDashesWidth');
   dashes.style.marginLeft = '0'; // reset width so it can be measured
   var currentWidth = dashes.offsetWidth;
   // console.log('currentWidth', currentWidth);
@@ -122,11 +126,13 @@ function adjustDashesWidth() {
 adjustDashesWidth();
 
 function showNav() {
+  // console.log('showNav')
   if (mastheadHidden) { masthead.classList.remove('masthead--hidden'); }
   mastheadHidden = false;
 }
 
 function hideNav() {
+  // console.log('hideNav')
   if (mastheadHidden) { masthead.classList.add('masthead--hidden'); }
   mastheadHidden = true;
 }
@@ -146,7 +152,7 @@ function hideNav() {
 // adjustBrandPos();
 
 function resizeWatcher() {
-  console.log('resize');
+  // console.log('resize');
   requestAnimationFrame(adjustDashesWidth);
   // requestAnimationFrame(adjustBrandPos);
 }
