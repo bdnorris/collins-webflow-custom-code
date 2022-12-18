@@ -7,6 +7,15 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  p a {
+    font-weight: 700;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    -webkit-font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
+    font-variant-numeric: oldstyle-nums diagonal-fractions;
+  }
+
   .icon,
   .navigation-row {
     -webkit-box-sizing: content-box;
@@ -294,10 +303,11 @@
   }
 
   .cs-intro p {
-    -webkit-hyphens: auto;
-    hyphens: auto;
-    -webkit-font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
-    font-variant-ligatures: common-ligatures discretionary-ligatures contextual;
-    font-variant-numeric: oldstyle-nums diagonal-fractions;
+    margin-bottom: 1.333em;
+  }
+
+  /* removing focus indicators from sections because they are obnoxious in mobile Safari */
+  section:focus {
+    outline: none;
   }
 </style>
