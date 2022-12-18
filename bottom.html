@@ -9,6 +9,7 @@ var content = document.getElementById('content');
 var masthead = document.querySelector('.masthead');
 var mastheadHidden = false;
 var downCaretSplash = document.getElementById('down-caret-splash');
+var upCaret = document.getElementById('up-caret-footer');
 var dashesPixelWidth = 12,
   modulusD,
   lastPos;
@@ -171,5 +172,15 @@ if (window.navigator && window.navigator.loadPurpose === "preview") {
   bigB.classList.add('big-b--not-home');
 	window.location.href = "https://brian-collins-design-2019.webflow.io/top-sites-preview";
 };
+
+if (typeof upCaret !== 'undefined' && upCaret !== null) {
+  upCaret.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
 
 </script>
